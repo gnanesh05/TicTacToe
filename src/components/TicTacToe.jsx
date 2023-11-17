@@ -9,7 +9,6 @@ const TicTacToe = () => {
     const[count, setCount] = useState(0);
     const[lock, setLock] = useState(false);
     const [msg, setMsg] = useState("");
-    const [winner, setWinner] = useState("");
 
     const toggle = (e,num)=>{
         if(lock)
@@ -29,47 +28,46 @@ const TicTacToe = () => {
 
     const checkWin=()=>{
         if(data[0]===data[1] && data[1]===data[2] && data[2]!=="")
-           announceWin(data);
+           announceWin();
         else if(data[3]===data[4] && data[4]===data[5] && data[5] !=="")
-           announceWin(data);
+           announceWin();
         else if(data[6]===data[7] && data[7]===data[8] && data[8] !=="")
-            announceWin(data);
-        else if(data[0]===data[3] && data[3]===data[6] && data[8] !=="")
-            announceWin(data);
+            announceWin();
+        else if(data[0]===data[3] && data[3]===data[6] && data[6] !=="")
+            announceWin();
         else if(data[1]===data[4] && data[4]===data[7] && data[7] !=="")
-            announceWin(data);
+            announceWin();
         else if(data[2]===data[5] && data[5]===data[8] && data[8] !=="")
-            announceWin(data);
+            announceWin();
         else if(data[0]===data[4] && data[4]===data[8] && data[8] !=="")
-            announceWin(data);
+            announceWin();
         else if(data[0]===data[1] && data[1]===data[2] && data[2] !=="")
-            announceWin(data);
+            announceWin();
         else if(data[2]===data[4] && data[4]===data[6] && data[6] !=="")
-            announceWin(data);
+            announceWin();
         
     }
 
-    const announceWin = (winner)=>{
+    const announceWin = ()=>{
         setLock(true);
         if(count%2===0){
-            setWinner("Circle");
             setMsg("Winner is Circle");
         }
            
         else{
-            setWinner("Cross");
             setMsg("Winner is Cross");
         }
            
     }
 
     const reset = ()=>{
-        const boxes = document.querySelectorAll('.boxes');
-        boxes.forEach((box)=>box.innerHTML = "");
         setLock(false)
         setMsg('');
-        setWinner('');
         setCount(0);
+        data = ["","","","","","","","",""];
+        const boxes = document.querySelectorAll('.boxes');
+        boxes.forEach((box)=>box.innerHTML = "");
+       
     }
 
 
